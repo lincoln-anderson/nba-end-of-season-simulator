@@ -54,7 +54,7 @@ interface ApiResponse {
 }
 
 export const useGetNbaStandings = (conference: string) => {
-  useQuery({
+  return useQuery({
     queryKey: standingRequestKeys.detail(conference),
     queryFn: async () => {
       const res = await axios.get<ApiResponse>(
@@ -66,8 +66,8 @@ export const useGetNbaStandings = (conference: string) => {
           },
         },
       );
-      console.log(res.data.api.standings);
-      return res.data.api.standings;
+      console.log(res);
+      return res;
     },
   });
 };
