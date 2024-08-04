@@ -1,4 +1,4 @@
-import {  Stack, Typography, } from '@mui/material';
+import {  Box, Stack, Typography, } from '@mui/material';
 import { useGetNbaStandings } from '../api/standings.queries';
 import TeamCard from '../components/TeamCard';
 import data from '../api/exampleStandings.json'
@@ -10,21 +10,24 @@ export function HomePage() {
 // if (isLoading) {
 //     return <div>Loading...</div>;
 //   }
-  console.log(data.example1);
-  return (
-    <Stack>
-      <Typography>Home Page</Typography>
-    </Stack>
-  //   <Stack>
-  //     {standings &&
-  //     <Stack>
-  //       {standings.data.api.standings.map((team) => (
-  //         <TeamCard props={team} ></TeamCard>
-  //       ))} 
+  console.log(data);
+  data.sort((a, b) => parseInt(b.win) - parseInt(a.win));
 
-  //       </Stack>
-  // }
+  return (
+    <Box>
+    <Stack>
+      {/* <Typography>{data.example1.away.win}</Typography> */}
+    </Stack>
+    <Stack>
+      <Stack gap={8}>
+        {data.map((team) => (
+          <TeamCard props={team} ></TeamCard>
+        ))} 
+
+        </Stack>
+  
       
-  //   </Stack>
+    </Stack>
+    </Box>
   );
 }
