@@ -25,7 +25,6 @@ export default function RootLayout({
   useEffect(() => {
     if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
       import("../../mocks/browser")
-        .then(({ worker }) => worker.start())
         .then(() => setIsMSWReady(true))
         .catch((err) => console.error("MSW Worker failed to start:", err));
     } else {
